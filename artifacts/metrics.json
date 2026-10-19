@@ -1,0 +1,53 @@
+{
+  "dataset": "data.csv",
+  "prediction_stage": "after-departure",
+  "target": "Arrival Delay in Minutes",
+  "features": [
+    "Age",
+    "Flight Distance",
+    "Departure Delay in Minutes",
+    "Gender",
+    "Customer Type",
+    "Type of Travel",
+    "Class"
+  ],
+  "rows_used": 129487,
+  "rows_dropped_for_invalid_target": 393,
+  "target_profile_minutes": {
+    "mean": 15.09112883918849,
+    "median": 0.0,
+    "p90": 44.0,
+    "p95": 78.0,
+    "p99": 182.0,
+    "maximum": 1584.0,
+    "zero_delay_pct": 56.18556302949331
+  },
+  "train_rows": 103589,
+  "test_rows": 25898,
+  "baseline_median_predictor": {
+    "mae_minutes": 15.602672021005484,
+    "rmse_minutes": 44.24316316748428,
+    "median_absolute_error_minutes": 0.0,
+    "r2": -0.14203113753100838,
+    "within_5_minutes_pct": 65.05521661904395,
+    "within_15_minutes_pct": 76.92099776044482,
+    "mean_signed_error_minutes": -15.602672021005484
+  },
+  "tuned_hist_gradient_boosting": {
+    "mae_minutes": 6.057171156029969,
+    "rmse_minutes": 17.194245752417487,
+    "median_absolute_error_minutes": 2.2744636538885543,
+    "r2": 0.827514788370343,
+    "within_5_minutes_pct": 70.02857363502973,
+    "within_15_minutes_pct": 91.48582902154607,
+    "mean_signed_error_minutes": -0.08162325017788205
+  },
+  "best_cv_mae_minutes": 5.801134648409246,
+  "best_parameters": {
+    "regressor__min_samples_leaf": 50,
+    "regressor__max_leaf_nodes": 31,
+    "regressor__max_iter": 300,
+    "regressor__learning_rate": 0.1,
+    "regressor__l2_regularization": 5.0
+  }
+}
