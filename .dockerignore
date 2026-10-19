@@ -3,6 +3,5 @@ __pycache__/
 *.py[cod]
 .git/
 data.csv
-frontend/
 train.py
 artifacts/*.csv

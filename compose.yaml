@@ -7,3 +7,17 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    image: airline-delay-frontend
+    ports:
+      - "${FRONTEND_PORT:-8501}:8501"
+    environment:
+      AIRLINE_API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

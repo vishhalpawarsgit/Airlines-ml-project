@@ -139,20 +139,22 @@ health check and interactive API docs are available at
 processes running while using the app. To use a different backend address,
 set `AIRLINE_API_URL` before launching Streamlit.
 
-### Run the API with Docker
+### Run the app with Docker Compose
 
-Build and run the backend API from the project root. The image uses the
-after-departure model and metadata already present in `artifacts/`.
+Build and run the frontend and backend as separate containers from the project
+root. The backend uses the after-departure model and metadata already present
+in `artifacts/`.
 
 ```bash
 docker compose up --build
 ```
 
-The API health check and documentation are available at
-`http://localhost:8000/health` and `http://localhost:8000/docs`. The Docker
-image runs only the API; start the Streamlit frontend separately and set
-`AIRLINE_API_URL=http://localhost:8000` so it can reach the container. Stop the
-service with `docker compose down`.
+Open the Streamlit frontend at `http://localhost:8501`. The API health check
+and interactive documentation are available at `http://localhost:8000/health`
+and `http://localhost:8000/docs`. Compose connects the frontend to the API
+using its internal service name. Stop both containers with
+`docker compose down`. If port 8501 is already in use, set
+`FRONTEND_PORT=8502` when starting Compose and open `http://localhost:8502`.
 
 If you previously trained the pre-departure variant, rerun the default
 `.venv/bin/python train.py` command before starting the API. The API
